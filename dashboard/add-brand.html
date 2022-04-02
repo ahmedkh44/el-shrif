@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../dashboard/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/select2/select2.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/toastr.js/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsive.css">
+    <script src="https://use.fontawesome.com/215efd3a06.js"></script>
+    <title>داش بورد - اضافة منتج</title>
+</head>
+
+<body>
+    <style>
+        .c-sidebar__link i {
+            margin-left: 15px;
+        }
+    </style>
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+    <div class="page-container">
+        <div class="c-sidebar">
+            <i class="fa fa-bars bars-show"></i>
+            <div class="c-sidebar__menu">
+                <h2 class="c-sidebar__title"><a href="index.html">الشريف</a></h2>
+                <nav class="c-sidebar__navigation">
+                    <a href="add_item.html" class="c-sidebar__link">اضافة صور السليد<i class="fa fa-plus"></i></a>
+                    <a href="edit-image-main.html" class="c-sidebar__link">تعديل صور السليد<i
+                            class="fa fa-edit"></i></a>
+                    <a href="add-product.html" class="c-sidebar__link">إضافة منتج<i class="fa fa-plus"></i></a>
+                    <a href="products.html" class="c-sidebar__link">منتجات<i class="fa fa-object-group"></i></a>
+                    <a href="offer-img.html" class="c-sidebar__link">صورة بانر العرض<i class="fa fa-plus"></i></a>
+                    <a href="add-brand.html" class="c-sidebar__link">اضافة اسم الماركة<i class="fa fa-plus"></i></a>
+                </nav>
+            </div>
+            <div class="c-sidebar__backdrop"></div>
+        </div>
+
+        <article class="main-page">
+
+            <div class="page-header">
+                <h1 class="page-title">اضافة اسم الماركة </h1>
+            </div>
+            <form id="form">
+                <div class="form-product">
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label class="c-textfield__label">اسم الماركة <span class="required-span">*</span></label>
+                            <input type="text" id="NameBrand" class="c-textfield__input" placeholder="اضف اسم الماركة"
+                                required>
+                            <span class="error-messege">برجاء اضافة هذا الحقل</span>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <button class="c-btn edit-btn-c" id="AddBtn" type="submit">إضافة</button>
+                        <button class="c-btn edit-btn-c" id="CanesleBtn" type="submit">رجوع</button>
+                    </div>
+                </div>
+            </form>
+        </article>
+    </div>
+
+    <script src="./js/jquery_3.6.0.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="./js/sweetalert2.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="../dashboard/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../dashboard/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="../dashboard/lib/select2/js/select2.min.js"></script>
+    <script src="../dashboard/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../dashboard/lib/toastr.js/toastr.min.js"></script>
+    <script src="../dashboard/js/bootstrap-multiselect.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+ 
+        function addBrand() {
+            var formdata = new FormData();
+            // formdata.append("id", 2)
+            formdata.append("name", $('#NameBrand').val())
+            $.ajax({
+                url: 'http://ahmedkhaled44-001-site1.itempurl.com/api/Brand/AddBrand',
+                type: "POST",
+                data: formdata,
+                dataType: "json",
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $("#overlay").fadeOut(300);
+                    Swal.fire({
+                        title: 'تم الاضافة!',
+                        text: "تم اضافة منتج جديد",
+                        icon: 'success',
+                        confirmButtonColor: '#F8AD47',
+                        confirmButtonText: 'نعم',
+                    })
+                        .then(() => {
+                            window.location.href = "add-product.html";
+
+                        })
+                    console.log(formdata)
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+
+        $('#AddBtn').on('click', (e) => {
+            e.preventDefault();
+            if ($('#NameBrand').val().length == 0) {
+                $('#NameBrand').addClass('error');
+                $('.error-messege').addClass('error-messege-show')
+            } else {
+                $('#NameBrand').removeClass('error');
+                $('.error-messege').removeClass('error-messege-show')
+                Swal.fire({
+                    title: 'اضافة اسم ماركة',
+                    text: "هل تريد اضافة اسم ماركة جديد",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4D9C44',
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا'
+                })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            $("#overlay").fadeIn(300);
+                            addBrand()
+                        }
+                    })
+            }
+        })
+    </script>
+</body>
+
+</html>

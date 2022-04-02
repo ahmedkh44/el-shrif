@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../dashboard/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/select2/select2.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/toastr.js/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsive.css">
+    <script src="https://use.fontawesome.com/215efd3a06.js"></script>
+    <title>داش بورد - اضافة صورة</title>
+</head>
+
+<body>
+    <style>
+        .c-sidebar__link i {
+            margin-left: 15px;
+        }
+    </style>
+    <div class="page-container">
+        <div class="c-sidebar">
+            <i class="fa fa-bars bars-show"></i>
+            <div class="c-sidebar__menu">
+                <h2 class="c-sidebar__title"><a href="index.html">الشريف</a></h2>
+                <nav class="c-sidebar__navigation">
+                    <a href="add_item.html" class="c-sidebar__link">اضافة صور  السليد<i class="fa fa-plus"></i></a>
+                    <a href="edit-image-main.html" class="c-sidebar__link">تعديل صور السليد<i class="fa fa-edit"></i></a>
+                    <a href="add-product.html" class="c-sidebar__link">إضافة منتج<i class="fa fa-plus"></i></a>
+                    <a href="products.html" class="c-sidebar__link">منتجات<i class="fa fa-object-group"></i></a>
+                    <a href="offer-img.html" class="c-sidebar__link">صورة بانر العرض<i class="fa fa-plus"></i></a>
+                    <a href="add-brand.html" class="c-sidebar__link">اضافة اسم الماركة<i class="fa fa-plus"></i></a>
+                </nav>
+            </div>
+            <div class="c-sidebar__backdrop"></div>
+        </div>
+
+        <article class="main-page">
+
+            <div class="page-header">
+                <h1 class="page-title">اضافة صورة </h1>
+            </div>
+            <form id="form" class="c-form">
+                <div class="c-upload js-upload">
+                    <header class="c-upload__header">
+                        <h4 class="c-upload__title">
+                            اضف صورة<span class="required-span">*</span>
+                            <br />
+                            <span class="col-form-label" style="font-size:16px;"> اضغط على الصورة لاضافة صورة جديدة</span>
+                        </h4>
+                        <span class="c-upload__label c-upload__label--remove js-upload-remove">احذف الصورة</span>
+                    </header>
+                    <div class="c-upload__body">
+                        <img id="selectedImage" height="400" src="./images/upload.svg" class="js-upload-placeholder">
+                        <input type="file" id="MainImageFile" asp-for="MainImageFile" accept="image/png, image/gif, image/jpeg" onchange="loadFile(event)" class="c-upload__field js-upload-value" required>
+                        <span asp-validation-for="MainImageFile" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="c-form__controls">
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label class="c-textfield__label">اضافة تعليق<span class="required-span">*</span></label>
+                            <input type="text" asp-for="Name" class="c-textfield__input" placeholder="اضف تعليق" id="product-nam">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label for="product-desc" class="c-textfield__label">الوصف<span class="required-span">*</span></label>
+                            <textarea asp-for="Description" class="c-textfield__textarea" placeholder="الوصف تفصيليا" id="product-desc"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label for="product-desc" class="c-textfield__label">الحالة</label>
+                            <select asp-for="Description" class="c-textfield__input" placeholder="الوصف تفصيليا" id="product-desc">
+                                <option value="show">اظهار</option>
+                                <option value="hide">اخفاء</option>
+                            </select>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <button class="c-btn edit-btn-c" id="AddBtn" type="submit">إضافة</button>
+                        <button class="c-btn edit-btn-c" id="CanesleBtn" type="submit">رجوع</button>
+                    </div>
+                </div>
+            </form>
+
+        </article>
+    </div>
+
+    <script src="../dashboard/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../dashboard/js/popper.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="../dashboard/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="../dashboard/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../dashboard/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="./js/sweetalert2.min.js"></script>
+    <script src="../dashboard/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../dashboard/lib/toastr.js/toastr.min.js"></script>
+    <script src="../dashboard/js/bootstrap-multiselect.js"></script>
+    <script src="../dashboard/assets/js/banner.js" charset="UTF-8"></script>
+    <script src="../dashboard/assets/js/tabs.js" charset="UTF-8"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById("selectedImage");
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+        $("#AddBtn").click(e => {
+            Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You change your profile picture!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4D9C44',
+                    confirmButtonText: 'Yes'
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        $("#overlay").fadeIn(300);
+                        uploadattachment(ItemId, "Employees", imgSrc);
+                    }
+                })
+        })
+    </script>
+</body>
+
+</html>

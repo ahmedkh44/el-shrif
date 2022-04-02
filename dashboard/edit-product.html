@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../dashboard/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/select2/select2.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/toastr.js/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsive.css">
+    <script src="https://use.fontawesome.com/215efd3a06.js"></script>
+    <title>داش بورد - اضافة منتج</title>
+</head>
+
+<body>
+    <style>
+        .c-sidebar__link i {
+            margin-left: 15px;
+        }
+    </style>
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+    <div class="page-container">
+        <div class="c-sidebar">
+            <i class="fa fa-bars bars-show"></i>
+            <div class="c-sidebar__menu">
+                <h2 class="c-sidebar__title"><a href="index.html">الشريف</a></h2>
+                <nav class="c-sidebar__navigation">
+                    <a href="add_item.html" class="c-sidebar__link">اضافة صور السليد<i class="fa fa-plus"></i></a>
+                    <a href="edit-image-main.html" class="c-sidebar__link">تعديل صور السليد<i
+                            class="fa fa-edit"></i></a>
+                    <a href="add-product.html" class="c-sidebar__link">إضافة منتج<i class="fa fa-plus"></i></a>
+                    <a href="products.html" class="c-sidebar__link">منتجات<i class="fa fa-object-group"></i></a>
+                    <a href="offer-img.html" class="c-sidebar__link">صورة بانر العرض<i class="fa fa-plus"></i></a>
+                    <a href="add-brand.html" class="c-sidebar__link">اضافة اسم الماركة<i class="fa fa-plus"></i></a>
+                </nav>
+            </div>
+            <div class="c-sidebar__backdrop"></div>
+        </div>
+
+        <article class="main-page">
+
+            <div class="page-header">
+                <h1 class="page-title">اضافة منتج </h1>
+            </div>
+            <form id="form" class="">
+                <div class="c-upload js-upload">
+                    <header class="c-upload__header">
+                        <h4 class="c-upload__title">
+                            صورة منتج<span class="required-span">*</span>
+                            <br />
+                            <span class="col-form-label" style="font-size:16px;"> اضغط على الصورة لاضافة صورة
+                                جديدة</span>
+                        </h4>
+                        <span class="c-upload__label c-upload__label--remove js-upload-remove">احذف الصورة</span>
+                    </header>
+                    <div class="c-upload__body">
+                        <img id="selectedImage" height="400" src="./images/upload.svg" class="js-upload-placeholder">
+                        <input type="file" id="MainImageFile" accept="image/png, image/gif, image/jpeg"
+                            onchange="loadFile(event)" class="c-upload__field js-upload-value" required>
+                        <span class="error-messege">برجاء اضافة هذا الحقل</span>
+                    </div>
+                </div>
+                <div class="c-upload js-upload">
+                    <header class="c-upload__header">
+                        <h4 class="c-upload__title">
+                            صورة اخرى للمنتج
+                            <br />
+                            <span class="col-form-label" style="font-size:16px;"> اضغط على الصورة لاضافة صورة
+                                جديدة</span>
+                        </h4>
+                        <span class="c-upload__label c-upload__label--remove js-upload-remove">احذف الصورة</span>
+                    </header>
+                    <div class="c-upload__body">
+                        <img id="selectedImage" height="400" src="./images/upload.svg" class="js-upload-placeholder">
+                        <input type="file" id="ImageFile" accept="image/png, image/gif, image/jpeg"
+                            onchange="loadFile(event)" class="c-upload__field js-upload-value">
+                    </div>
+                </div>
+
+                <div class="form-product">
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label class="c-textfield__label">كود المنتج<span class="required-span">*</span></label>
+                            <input type="text" id="Code" class="c-textfield__input number" placeholder="اضف كود المنتج"
+                                required>
+                            <span class="error-messege">برجاء اضافة هذا الحقل</span>
+                        </div>
+                    </div>
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label for="product-desc" class="c-textfield__label">اسم الماركة</label>
+                            <select asp-for="Description" class="c-textfield__input"
+                                id="BrandName">
+                                <option value="show">اظهار</option>
+                                <option value="hide">اخفاء</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label class="c-textfield__label">اسم المنتج <span class="required-span">*</span></label>
+                            <input type="text" id="NameProduct" class="c-textfield__input" placeholder="اضف اسم النتج"
+                                required>
+                            <span class="error-messege">برجاء اضافة هذا الحقل</span>
+                        </div>
+                    </div>
+
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label for="product-desc" class="c-textfield__label">الوصف<span
+                                    class="required-span">*</span></label>
+                            <textarea class="c-textfield__textarea" id="DetailsProduct" placeholder=" وصف المنتج"
+                                required></textarea>
+                            <span class="error-messege">برجاء اضافة هذا الحقل</span>
+                        </div>
+                    </div>
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label class="c-textfield__label">سعر المنتج<span class="required-span">*</span></label>
+                            <input type="text" class="c-textfield__input number" id="ProductPrice"
+                                placeholder="اضف سعر المنتج" required>
+                            <span class="error-messege">برجاء اضافة هذا الحقل</span>
+                        </div>
+                    </div>
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label class="c-textfield__label">كمية المنتج<span class="required-span">*</span></label>
+                            <input type="text" class="c-textfield__input number" id="ProductQuantity"
+                                placeholder="اضف كم قطعة " required>
+                            <span class="error-messege">برجاء اضافة هذا الحقل</span>
+                        </div>
+                    </div>
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label class="c-textfield__label">مواصفة اخرى للمنتج</label>
+                            <input type="text" class="c-textfield__input" id="OtherDetailsProduct"
+                                placeholder="اضف اسم النتج">
+                        </div>
+                    </div>
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label class="c-textfield__label">نسبة الخصم</label>
+                            <input type="text" class="c-textfield__input" id="OtherDetailsProduct"
+                                placeholder="نسبة خصم %">
+                        </div>
+                    </div>
+                    <div class="c-form__row">
+                        <div class="c-textfield">
+                            <label for="product-desc" class="c-textfield__label">الحالة</label>
+                            <select asp-for="Description" class="c-textfield__input" placeholder="الوصف تفصيليا"
+                                id="ProductShow">
+                                <option value="show">اظهار</option>
+                                <option value="hide">اخفاء</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <button class="c-btn edit-btn-c" id="AddBtn" type="submit">إضافة</button>
+                        <button class="c-btn edit-btn-c" id="CanesleBtn" type="submit">رجوع</button>
+                    </div>
+                </div>
+            </form>
+        </article>
+    </div>
+
+    <script src="./js/jquery_3.6.0.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="./js/sweetalert2.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="../dashboard/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../dashboard/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="../dashboard/lib/select2/js/select2.min.js"></script>
+    <script src="../dashboard/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../dashboard/lib/toastr.js/toastr.min.js"></script>
+    <script src="../dashboard/js/bootstrap-multiselect.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        var loadFile = function (event) {
+            var image = document.getElementById("selectedImage");
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+        typeNumberOnly()
+        getBrandName ()
+
+        async function readURLImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.readAsDataURL(input.files[0]);
+                reader.onload = function (e) {
+                    console.log(e.target.result);
+
+                    $('#Image').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function addProduct() {
+            // var dataO = {
+            //     brandId: 1,
+            //     code: '5',
+            //     name: 'ثلاجة',
+            //     description: 'احسن',
+            //     price: 5,
+            //     quantity: 5,
+            //     isActive: true,
+            //     mainImage: document.getElementById('MainImageFile').files[0]
+
+            // };
+            var formdata = new FormData();
+            formdata.append("brandId", 1)
+            formdata.append("code", $('#Code').val())
+            formdata.append("name", $('#NameProduct').val())
+            formdata.append("description", $('#DetailsProduct').val())
+            formdata.append("price", $('#ProductPrice').val())
+            formdata.append("quantity", $('#ProductQuantity').val())
+            formdata.append("isActive", true)
+            formdata.append("mainImage", $('#MainImageFile')[0].files[0]);
+            formdata.push("ProductImages", $('#ImageFile')[0].files[0]);
+
+            
+
+            $.ajax({
+                url: 'http://ahmedkhaled44-001-site1.itempurl.com/api/Product/AddProduct',
+                type: "POST",
+                data: formdata,
+                dataType: "json",
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $("#overlay").fadeOut(300);
+                    Swal.fire({
+                        title: 'تم الاضافة!',
+                        text: "تم اضافة منتج جديد",
+                        icon: 'success',
+                        confirmButtonColor: '#F8AD47',
+                        confirmButtonText: 'نعم',
+                    })
+                        .then(() => {
+                            window.location.href = "add-product.html";
+
+                        })
+                    console.log(formdata)
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+        function getBrandName () {
+            var dataO = {
+                "pageNumber": 19,
+                "pageSize": 10
+                
+            };
+            var json = JSON.stringify(dataO);
+            $.ajax({
+                url: 'http://ahmedkhaled44-001-site1.itempurl.com/api/Brand/GetBrands',
+                type: "POST",
+                data: json,
+                dataType: "json",
+                processData: false,
+                contentType: "application/json;odata=verbose",
+                success: function (data) {
+                    console.log(data.data.list)
+                   console.log(data.data.list[0])
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+        $('#AddBtn').on('click', (e) => {
+            console.log($('#NameProduct').val().length)
+            e.preventDefault();
+            if ($('#NameProduct').val().length == 0 && $('#Code').val().length == 0 && $('#DetailsProduct').val().length == 0 && $('#ProductPrice').val().length == 0 && $('#ProductQuantity').val().length == 0 && $('#MainImageFile').val().length == 0) {
+                $('#NameProduct').addClass('error');
+                $('#DetailsProduct').addClass('error');
+                $('#Code').addClass('error');
+                $('#ProductPrice').addClass('error');
+                $('#ProductQuantity').addClass('error');
+                $('#MainImageFile').addClass('error');
+                $('.error-messege').addClass('error-messege-show')
+                console.log($('#NameProduct').val().length)
+            } else {
+                $('#NameProduct').removeClass('error');
+                $('#DetailsProduct').removeClass('error');
+                $('#Code').removeClass('error');
+                $('#ProductPrice').removeClass('error');
+                $('#ProductQuantity').removeClass('error');
+                $('#MainImageFile').removeClass('error');
+                $('.error-messege').removeClass('error-messege-show')
+                Swal.fire({
+                    title: 'اضافة منتج',
+                    text: "هل تريد اضافة منتج جديد",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4D9C44',
+                    confirmButtonText: 'نعم',
+                    cancelButtonText: 'لا'
+                })
+                    .then((result) => {
+                        if (result.isConfirmed) {
+                            $("#overlay").fadeIn(300);
+                            addProduct()
+                        }
+                    })
+            }
+        })
+    </script>
+</body>
+
+</html>

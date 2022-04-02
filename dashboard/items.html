@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../dashboard/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/select2/select2.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/toastr.js/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../dashboard/assets/css/main.css">
+    <script src="https://use.fontawesome.com/215efd3a06.js"></script>
+
+    <title>الصفحة الرئيسية</title>
+</head>
+<body>
+    <style>
+        .c-sidebar__link i {
+            margin-left: 15px;
+        }
+    </style>
+    <div class="page-container">
+        <div class="c-sidebar">
+            <i class="fa fa-bars"></i>
+            <div class="c-sidebar__menu">
+                <h2 class="c-sidebar__title"><a href="#">السراج</a></h2>
+                <nav class="c-sidebar__navigation">
+                    <a href="#" class="c-sidebar__link">الاستفسارات<i class="fa fa-comments"></i></a>
+                    <a href="#" class="c-sidebar__link">الفئات<i class="fa fa-object-group"></i></a>
+                    <a href="#" class="c-sidebar__link">اضافة عقار جديد<i class="fa fa-plus"></i></a>
+                    <a href="#" class="c-sidebar__link"> قائمة المبانى <i class="fa fa-building"></i></a>
+                    <a href="#" class="c-sidebar__link">قائمة الأراضى <i class="fa fa-circle"></i></a>
+                    <a href="#" class="c-sidebar__link">قائمة المحلات <i class="fa fa-square"></i></a>
+                    <a href="#" class="c-sidebar__link">المميزات الاضافية<i class="fa fa-puzzle-piece"></i></a>
+                    <a href="#" class="c-sidebar__link">الصور المتحركة <i class="fa fa-exclamation-triangle"></i></a>
+                </nav>
+            </div>
+
+            <div class="c-sidebar__backdrop">
+            </div>
+        </div>
+
+        <article class="main-page">
+            <header class="page-header">
+                <h1 class="page-title">المبانى</h1>
+            </header>
+            <div class="c-table c-table--select-all">
+                <header class="c-table__header">
+                    <h3 class="c-table__title">قائمة المبانى</h3>
+            
+                </header>
+                <table id="data_table" class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>المبنى</th>
+                            <th>السعر</th>
+                            <th>المساحة</th>
+                            <th>غرف النوم</th>
+                            <th>الحمامات</th>
+                            <th>الاعدادات</th>
+                        </tr>
+                    </thead>
+                </table>
+            
+            </div>            
+        </article>
+    </div>
+
+    <script src="../dashboard/lib/jquery/dist/jquery.min.js"></script>
+    <script src="../dashboard/lib/jquery/dist/jquery.min.js"></script>
+    <script src="../dashboard/js/popper.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="../dashboard/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="../dashboard/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../dashboard/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="../dashboard/lib/select2/js/select2.min.js"></script>
+    <script src="../dashboard/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../dashboard/lib/toastr.js/toastr.min.js"></script>
+    <script src="../dashboard/js/bootstrap-multiselect.js"></script>
+    <script src="../dashboard/assets/js/banner.js" charset="UTF-8"></script>
+    <script src="../dashboard/assets/js/tabs.js" charset="UTF-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="../dashboard/assets/js/chart.js" charset="UTF-8"></script>
+</body>
+</html>

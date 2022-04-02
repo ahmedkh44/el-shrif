@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../dashboard/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/select2/select2.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/toastr.js/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsive.css">
+    <script src="https://use.fontawesome.com/215efd3a06.js"></script>
+    <title>داش بورد - منتجات المتجر</title>
+</head>
+
+<body>
+    <style>
+        .c-sidebar__link i {
+            margin-left: 15px;
+        }
+    </style>
+    <div class="page-container">
+        <div class="c-sidebar">
+            <i class="fa fa-bars bars-show"></i>
+            <div class="c-sidebar__menu">
+                <h2 class="c-sidebar__title"><a href="index.html">الشريف</a></h2>
+                <nav class="c-sidebar__navigation">
+                    <a href="add_item.html" class="c-sidebar__link">اضافة صور السليد<i class="fa fa-plus"></i></a>
+                    <a href="edit-image-main.html" class="c-sidebar__link">تعديل صور السليد<i
+                            class="fa fa-edit"></i></a>
+                    <a href="add-product.html" class="c-sidebar__link">إضافة منتج<i class="fa fa-plus"></i></a>
+                    <a href="products.html" class="c-sidebar__link">منتجات<i class="fa fa-object-group"></i></a>
+                    <a href="offer-img.html" class="c-sidebar__link">صورة بانر العرض<i class="fa fa-plus"></i></a>
+                    <a href="add-brand.html" class="c-sidebar__link">اضافة اسم الماركة<i class="fa fa-plus"></i></a>
+                </nav>
+            </div>
+            <div class="c-sidebar__backdrop"></div>
+        </div>
+
+        <article class="main-page">
+            <div class="page-header">
+                <h1 class="page-title">منتجات المتجر</h1>
+            </div>
+            <div class="row all-products">
+                <div class="col-12 search-input">
+                    <input type="search" class="c-textfield__input" placeholder="البحث عن منتج...">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 pagination-center">
+                    <nav id="search-pagination">
+                        <ul class="pagination custom-pagination">
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <script src="./js/jquery_3.6.0.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="./js/sweetalert2.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="../dashboard/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../dashboard/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="../dashboard/lib/select2/js/select2.min.js"></script>
+    <script src="../dashboard/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../dashboard/lib/toastr.js/toastr.min.js"></script>
+    <script src="../dashboard/js/bootstrap-multiselect.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        var currentPage = 1;
+        getProduct(currentPage)
+        function getProduct(page) {
+            var dataO = {
+                "pageNumber": page,
+                "pageSize": 12
+            };
+            var json = JSON.stringify(dataO);
+            $.ajax({
+                url: 'http://ahmedkhaled44-001-site1.itempurl.com/api/Product/GetProducts',
+                type: "POST",
+                data: json,
+                dataType: "json",
+                processData: false,
+                contentType: "application/json;odata=verbose",
+                success: function (data) {
+                    currentPage++;
+                    let products = data.data.list;
+                    $('.all-products').empty()
+                    products.forEach(product => {
+                        console.log(product.mainImage)
+                        let productImag = product.mainImage,
+                            productName = product.name,
+                            productDes = product.description,
+                            productPrice = product.price,
+                            productActive = product.isActive;
+                        $('.all-products').append(
+                            `
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="appartment-info">
+                                    <div class="card shadow card-container">
+                                        <div class="img-hover-zoom img-hover-zoom--brightness">
+                                            <img class="card-img-top" src="${productImag}">
+                                        </div>
+                                        <div class="card-head">
+                                            <a href="property-single.html" class="card-title descrip-2 card-tilte-custom">${productName}</a>
+                                            <hr>
+                                            <p class="descrip-2 descrip-container">${productDes}</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="card-link"> سعر المنتج:<span id="card-body-num">${productPrice + " ج"}</span> </div>
+                                            <div class="btn-container">
+                                                <a href="#" class="c-btn edit-btn-c" id="AddBtn" type="submit">تعديل</a>
+                                                <button class="c-btn edit-btn-c" id="CanesleBtn" type="submit" onCLick="daleteItem()">حذف</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            `
+                        );
+                    });
+                    var numPages = parseInt(data.data.count / 10) + 1;
+                    $('.custom-pagination').empty()
+                    for (i = 0; i < numPages; i++) {
+                        $('.custom-pagination').append(`
+                            <li class="active"><a href="#"onCLick="getProduct(${i + 1})">${i + 1}</a></li>
+                        `)
+                    } 
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+        function daleteItem(id) {
+            var dataO = {
+                "pageNumber": 1,
+                "pageSize": 12
+            };
+            var json = JSON.stringify(dataO);
+            $.ajax({
+                url: 'http://ahmedkhaled44-001-site1.itempurl.com/api/Product/DeleteProduct?productId=14',
+                type: "POST",
+                data: json,
+                dataType: "json",
+                processData: false,
+                contentType: "application/json;odata=verbose",
+                success: function (data) {
+                    console.log(data.data.list)
+                    console.log('delete')
+                   
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        
+        }
+    </script>
+</body>
+
+</html>

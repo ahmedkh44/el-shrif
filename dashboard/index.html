@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../dashboard/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/select2/select2.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/toastr.js/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <title>الصفحة الرئيسية</title>
+</head>
+
+<body>
+    <style>
+        .c-sidebar__link i {
+            margin-left: 15px;
+        }
+    </style>
+    <div class="page-container">
+        <div class="c-sidebar">
+            <i class="fa fa-bars bars-show"></i>
+            <div class="c-sidebar__menu">
+                <h2 class="c-sidebar__title"><a href="#">الشريف</a></h2>
+                <nav class="c-sidebar__navigation">
+                    <a href="add_item.html" class="c-sidebar__link">اضافة صور السليد<i class="fa fa-plus"></i></a>
+                    <a href="edit-image-main.html" class="c-sidebar__link">تعديل صور السليد<i class="fa fa-edit"></i></a>
+                    <a href="add-product.html" class="c-sidebar__link">إضافة منتج<i class="fa fa-plus"></i></a>
+                    <a href="products.html" class="c-sidebar__link">منتجات<i class="fa fa-object-group"></i></a>
+                    <a href="offer-img.html" class="c-sidebar__link">صورة بانر العرض<i class="fa fa-plus"></i></a>
+                    <a href="add-brand.html" class="c-sidebar__link">اضافة اسم الماركة<i class="fa fa-plus"></i></a>
+                </nav>
+            </div>
+            <div class="c-sidebar__backdrop"></div>
+        </div>
+
+        <article class="main-page">
+            <header class="home-intro">
+                <h2 class="welcome-tag">
+                    مرحبا أحمد، أتمنى أنك تقضي يوما جميلا. <br /> شاهد آخر ماحدث في متجرك
+                </h2>
+                <div class="c-summary">
+                    <div class="c-summary__data">
+                        <span class="c-summary__value">34</span>
+                        <span class="c-summary__key">طلب</span>
+                    </div>
+                    <div class="c-summary__data">
+                        <span class="c-summary__value">1343</span>
+                        <span class="c-summary__key">زائر</span>
+                    </div>
+                    <div class="c-summary__data">
+                        <span class="c-summary__value">$4324</span>
+                        <span class="c-summary__key">مبيعات</span>
+                    </div>
+                </div>
+            </header>
+            <div class="c-actions">
+                <div class="c-action">
+                    <span class="c-action__title">10 طلبات تحتاج إلى تأكيد الدفع</span>
+                    <a href="" class="c-btn c-action__link">شاهد الطلبات</a>
+                </div>
+                <div class="c-action">
+                    <span class="c-action__title">+20 طلب يحتاج إلى الشحن</span>
+                    <a href="" class="c-btn c-action__link">شاهد الطلبات</a>
+                </div>
+                <div class="c-action">
+                    <span class="c-action__title">6 مراجعات جديدة تحتاج إلى الموافقة</span>
+                    <a href="" class="c-btn c-action__link">شاهد المراجعات الجديدة</a>
+                </div>
+            </div>
+
+            <div class="c-tabs c-tabs--fullwidth js-tabs">
+                <div class="c-tabs__controller">
+                    <span class="c-tabs__tab js-tab-link" data-index="orders">بريد الكتروني جديد</span>
+                    <span class="c-tabs__tab js-tab-link" data-index="products">بريد الكتروني قديم</span>
+                </div>
+                <div class="c-tabs__content">
+                    <div class="c-tabs__tabarea js-tab-area" data-indexed="orders">
+                        <div class="c-list">
+                            <img src="../assets/images/black-shirt.jpg" alt="" class="c-list__media">
+                            <span class="c-list__data">احمد خالد</span>
+                            <span class="c-list__data"> 01289527714</span>
+                            <span class="c-list__data">الموضوع</span>
+                            <span class="c-list__data">الرسالة</span>
+                            <div class="c-list__actions">
+                                <button class="btn custom-btn custom-btn-edit">
+                                    <span class="d-none d-md-block doneCall">تم التواصل</span>
+                                    <i class="fa fa-edit d-block d-md-none"></i>
+                                </button>
+                                <button class="btn btn-danger custom-btn custom-btn-danger">
+                                    <span class="d-none d-md-block">حذف الطلب</span>
+                                    <i class="fa fa-trash d-block d-md-none"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <nav id="search-pagination">
+                            <ul class="pagination custom-pagination">
+                                <li><a href="#">&laquo;</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="c-tabs__tabarea js-tab-area" data-indexed="products">
+                        <div class="c-list">
+                            <img src="../assets/images/black-shirt.jpg" alt="" class="c-list__media">
+                            <span class="c-list__data">احمد خالد</span>
+                            <span class="c-list__data"> 01289527714</span>
+                            <span class="c-list__data">الموضوع</span>
+                            <span class="c-list__data">الرسالة</span>
+                            <div class="c-list__actions">
+                                <button class="btn custom-btn custom-btn-edit">
+                                    <span class="d-none d-md-block">تم التواصل</span>
+                                    <i class="fa fa-edit d-block d-md-none"></i>
+                                </button>
+                                <button class="btn btn-danger custom-btn custom-btn-danger">
+                                    <span class="d-none d-md-block">حذف الطلب</span>
+                                    <i class="fa fa-trash d-block d-md-none"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="c-list">
+                            <img src="../assets/images/black-shirt.jpg" alt="" class="c-list__media">
+                            <span class="c-list__data">احمد خالد</span>
+                            <span class="c-list__data"> 01289527714</span>
+                            <span class="c-list__data">الموضوع</span>
+                            <span class="c-list__data">الرسالة</span>
+                            <div class="c-list__actions">
+                                <button class="btn custom-btn custom-btn-edit">
+                                    <span class="d-none d-md-block">تم التواصل</span>
+                                    <i class="fa fa-edit d-block d-md-none"></i>
+                                </button>
+                                <button class="btn btn-danger custom-btn custom-btn-danger">
+                                    <span class="d-none d-md-block">حذف الطلب</span>
+                                    <i class="fa fa-trash d-block d-md-none"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="c-list">
+                            <img src="../assets/images/black-shirt.jpg" alt="" class="c-list__media">
+                            <span class="c-list__data">احمد خالد</span>
+                            <span class="c-list__data"> 01289527714</span>
+                            <span class="c-list__data">الموضوع</span>
+                            <span class="c-list__data">الرسالة</span>
+                            <div class="c-list__actions">
+                                <button class="btn custom-btn custom-btn-edit">
+                                    <span class="d-none d-md-block">تم التواصل</span>
+                                    <i class="fa fa-edit d-block d-md-none"></i>
+                                </button>
+                                <button class="btn btn-danger custom-btn custom-btn-danger">
+                                    <span class="d-none d-md-block">حذف الطلب</span>
+                                    <i class="fa fa-trash d-block d-md-none"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <nav id="search-pagination">
+                            <ul class="pagination custom-pagination">
+                                <li><a href="#">&laquo;</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+    </div>
+
+    <script src="./js/jquery_3.6.0.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="./js/sweetalert2.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="../dashboard/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../dashboard/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="../dashboard/lib/select2/js/select2.min.js"></script>
+    <script src="../dashboard/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../dashboard/lib/toastr.js/toastr.min.js"></script>
+    <script src="../dashboard/js/bootstrap-multiselect.js"></script>
+    <script src="../dashboard/assets/js/banner.js" charset="UTF-8"></script>
+    <script src="../dashboard/assets/js/tabs.js" charset="UTF-8"></script>
+    <script>
+        $(".doneCall").click(e => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

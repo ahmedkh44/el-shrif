@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../dashboard/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="../dashboard/css/vendor/select2/select2.min.css" rel="stylesheet" />
+    <link href="../dashboard/lib/toastr.js/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="https://use.fontawesome.com/215efd3a06.js"></script>
+    <title>داش بورد - تعديل صورة</title>
+</head>
+
+<body>
+    <style>
+        .c-sidebar__link i {
+            margin-left: 15px;
+        }
+    </style>
+    <div class="page-container">
+        <div class="c-sidebar">
+            <i class="fa fa-bars bars-show"></i>
+            <div class="c-sidebar__menu">
+                <h2 class="c-sidebar__title"><a href="index.html">الشريف</a></h2>
+                <nav class="c-sidebar__navigation">
+                    <a href="add_item.html" class="c-sidebar__link">اضافة صور  السليد<i class="fa fa-plus"></i></a>
+                    <a href="edit-image-main.html" class="c-sidebar__link">تعديل صور السليد<i class="fa fa-edit"></i></a>
+                    <a href="add-product.html" class="c-sidebar__link">إضافة منتج<i class="fa fa-plus"></i></a>
+                    <a href="products.html" class="c-sidebar__link">منتجات<i class="fa fa-object-group"></i></a>
+                    <a href="offer-img.html" class="c-sidebar__link">صورة بانر العرض<i class="fa fa-plus"></i></a>
+                    <a href="add-brand.html" class="c-sidebar__link">اضافة اسم الماركة<i class="fa fa-plus"></i></a>
+                </nav>
+            </div>
+            <div class="c-sidebar__backdrop"></div>
+        </div>
+
+        <article class="main-page">
+
+            <div class="page-header">
+                <h1 class="page-title">تعديل صورة </h1>
+            </div>
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>المنتج</th>
+                        <th>الوصف</th>
+                        <th>اخفاء/إظهار</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr data-product-info data-product-price="400">
+                        <td>
+                            <div class="media custom-media">
+                                <img src="images/iphone-13-pro-max-graphite-select_uuha7vkcoxqfeu9x.png" class="d-none d-md-block">
+                                <div class="media-body">
+                                    <h4>
+                                        هاتف ايفون
+                                    </h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p>هلاتف ايفون 13</p>
+                        </td>
+                        <td>
+                            <input type="hidden" name="product1" value="هاتف">
+                            <select name="quantity1" class="form-control custom-form-control quantity" data-product-quantity>
+                                    <option value="1">إظهار</option>
+                                    <option value="2">إخفاء</option>
+                                </select>
+                        </td>
+                        <td class="total-price-for-product hide-on-small">
+                            <button class="btn custom-btn custom-btn-edit" data-remove-from-card>
+                                <span class="d-none d-md-block">تعديل</span>
+                                <i class="fa fa-edit d-block d-md-none"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger custom-btn custom-btn-danger" data-remove-from-card>
+                                    <span class="d-none d-md-block">حذف</span>
+                                    <i class="fa fa-trash d-block d-md-none"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr data-product-info data-product-price="300">
+                        <td>
+                            <div class="media custom-media">
+                                <img src="images/iphone-13-pro-max-graphite-select_uuha7vkcoxqfeu9x.png" class="d-none d-md-block">
+                                <div class="media-body">
+                                    <h4>
+                                        هاتف ايفون 13
+                                    </h4>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p>هلاتف ايفون 13</p>
+                        </td>
+                        <td>
+                            <input type="hidden" name="product1" value="هاتف">
+                            <select name="quantity1" class="form-control custom-form-control quantity" data-product-quantity>
+                                    <option value="1">إظهار</option>
+                                    <option value="2">إخفاء</option>
+                                </select>
+                        </td>
+                        <td class="total-price-for-product hide-on-small">
+                            <button class="btn custom-btn custom-btn-edit" data-remove-from-card>
+                                <span class="d-none d-md-block">تعديل</span>
+                                <i class="fa fa-edit d-block d-md-none"></i>
+                        </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger custom-btn custom-btn-danger" data-remove-from-card>
+                                    <span class="d-none d-md-block">حذف</span>
+                                    <i class="fa fa-trash d-block d-md-none"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </article>
+    </div>
+
+    <script src="../dashboard/lib/jquery/dist/jquery.min.js"></script>
+    <script src="../dashboard/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../dashboard/js/popper.min.js"></script>
+    <script src="../dashboard/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../dashboard/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="../dashboard/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="../dashboard/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../dashboard/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="../dashboard/lib/select2/js/select2.min.js"></script>
+    <script src="../dashboard/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../dashboard/lib/toastr.js/toastr.min.js"></script>
+    <script src="../dashboard/js/bootstrap-multiselect.js"></script>
+    <script src="../dashboard/assets/js/banner.js" charset="UTF-8"></script>
+    <script src="../dashboard/assets/js/tabs.js" charset="UTF-8"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        $("#AddBtn").click(e => {
+            Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You change your profile picture!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#4D9C44',
+                    confirmButtonText: 'Yes'
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        $("#overlay").fadeIn(300);
+                        uploadattachment(ItemId, "Employees", imgSrc);
+                    }
+                })
+        })
+    </script>
+</body>
+
+</html>
